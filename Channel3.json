@@ -1,0 +1,52 @@
+{
+    "channel": 3,
+    "type":"movies",
+    "shuffle":false,
+    "movies": [
+        {
+            "name": "Star Wars: Episode I - The Phantom Menace",
+            "HD":true,
+            "path": ""
+        },
+        {
+            "name": "Star Wars: Episode II - Attack of the Clones",
+            "HD":true,
+            "path": ""
+        },
+        {
+            "name": "Star Wars: Episode III - Revenge of the Sith",
+            "HD":true,
+            "path": ""
+        },
+        {
+            "name": "Star Wars: Episode IV - A new Hope",
+            "HD":true,
+            "path": ""
+        },
+        {
+            "name": "Star Wars: Episode V - The Empire Strikes Back",
+            "HD":true,
+            "path": ""
+        },
+        {
+            "name": "Star Wars: Episode VI - Return of the Jedi",
+            "HD":true,
+            "path": ""
+        },
+        {
+            "name": "Star Wars: Episode VII - The Force Awakens",
+            "HD":true,
+            "path": ""
+        },
+        {
+            "name": "Star Wars: Episode VIII - The Last Jedi",
+            "HD":true,
+            "path": ""
+        },
+        {
+            "name": "Star Wars: Episode IX - The Rise of Skywalker",
+            "HD":true,
+            "path": ""
+        }
+    ]
+}

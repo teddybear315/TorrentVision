@@ -1,0 +1,71 @@
+{
+    "channel": 420,
+    "type":"shows",
+    "shuffle":false,
+    "shows": [
+        {
+            "name": "Trailer Park Boys",
+            "seasons": [
+                {
+                    "HD":false,
+                    "path":"G:\\TV\\Trailer Park Boys\\Season 1"
+                },
+                {
+                    "HD":false,
+                    "path":"G:\\TV\\Trailer Park Boys\\Season 2"
+                    
+                },
+                {
+                    "HD":false,
+                    "path":"G:\\TV\\Trailer Park Boys\\Season 3"
+                    
+                },
+                {
+                    "HD":false,
+                    "path":"G:\\TV\\Trailer Park Boys\\Season 4"
+                    
+                },
+                {
+                    "HD":false,
+                    "path":"G:\\TV\\Trailer Park Boys\\Season 5"
+                    
+                },
+                {
+                    "HD":false,
+                    "path":"G:\\TV\\Trailer Park Boys\\Season 6"
+                    
+                },
+                {
+                    "HD":true,
+                    "path":"G:\\TV\\Trailer Park Boys\\Season 7"
+                    
+                },
+                {
+                    "HD":true,
+                    "path":"G:\\TV\\Trailer Park Boys\\Season 8"
+                    
+                },
+                {
+                    "HD":true,
+                    "path":"G:\\TV\\Trailer Park Boys\\Season 9"
+                    
+                },
+                {
+                    "HD":true,
+                    "path":"G:\\TV\\Trailer Park Boys\\Season 10"
+                    
+                },
+                {
+                    "HD":true,
+                    "path":"G:\\TV\\Trailer Park Boys\\Season 11"
+                    
+                },
+                {
+                    "HD":true,
+                    "path":"G:\\TV\\Trailer Park Boys\\Season 12"
+                    
+                }
+            ]
+        }
+    ]
+}

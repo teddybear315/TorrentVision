@@ -1,0 +1,100 @@
+{
+    "channel": 69,
+    "type":"shows",
+    "shuffle":true,
+    "shows": [
+        {
+            "name": "Star Wars",
+            "seasons": [
+                {
+                    "HD":false,
+                    "path":"G:\\TV\\Star Wars\\The Clone Wars (2008)"
+                }
+            ]
+        },
+        {
+            "name": "The Regular Show",
+            "seasons": [
+                {
+                    "HD":true,
+                    "path":"G:\\TV\\The Regular Show\\Season 1"
+                },
+                {
+                    "HD":true,
+                    "path":"G:\\TV\\The Regular Show\\Season 2"
+                },
+                {
+                    "HD":true,
+                    "path":"G:\\TV\\The Regular Show\\Season 3"
+                },
+                {
+                    "HD":true,
+                    "path":"G:\\TV\\The Regular Show\\Season 4"
+                },
+                {
+                    "HD":true,
+                    "path":"G:\\TV\\The Regular Show\\Season 5"
+                },
+                {
+                    "HD":true,
+                    "path":"G:\\TV\\The Regular Show\\Season 6"
+                },
+                {
+                    "HD":true,
+                    "path":"G:\\TV\\The Regular Show\\Season 7"
+                },
+                {
+                    "HD":true,
+                    "path":"G:\\TV\\The Regular Show\\Season 8"
+                }
+            ]
+        },
+        {
+            "name": "Star Wars: The Bad Batch",
+            "seasons": [
+                {
+                    "HD":true,
+                    "path":"G:\\TV\\Star Wars\\The Clone Wars\\The Bad Batch\\Season 1"
+                },
+                {
+                    "HD":true,
+                    "path":"G:\\TV\\Star Wars\\The Clone Wars\\The Bad Batch\\Season 2"
+                }
+            ]
+        },
+        {
+            "name": "Trailer Park Boys: The Animated Series",
+            "seasons": [
+                {
+                    "HD":true,
+                    "path":"G:\\TV\\Trailer Park Boys\\The Animated Series\\Season 1"
+                },
+                {
+                    "HD":true,
+                    "path":"G:\\TV\\Trailer Park Boys\\The Animated Series\\Season 2"
+                }
+            ]
+        },
+        {
+            "name": "Johnny Test",
+            "seasons": [
+                {
+                    "HD":false,
+                    "path":"G:\\TV\\Johnny Test\\Season 1"
+                },
+                {
+                    "HD":false,
+                    "path":"G:\\TV\\Johnny Test\\Season 2"
+                },
+                {
+                    "HD":false,
+                    "path":"G:\\TV\\Johnny Test\\Season 3"
+                },
+                {
+                    "HD":false,
+                    "path":"G:\\TV\\Johnny Test\\Season 4"
+                }
+            ]
+        }
+    ]
+}
