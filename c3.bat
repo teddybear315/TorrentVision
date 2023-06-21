@@ -1,3 +1,3 @@
-rmdir "./channels/3/" /S
-python .\script.py -c="Channel3.json" %1
+python .\script.py -c="Channel3.json" %1 
 pause
+rmdir "./channels/3/" /S

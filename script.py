@@ -193,22 +193,27 @@ class Channel:
             with open(self.playlist_path, "w+") as f_play: f_play.flush()
         except: print("File setup not required")
         # Fill Playlist File
-        with open(self.playlist_path, "a") as playlist_file:
-            for episode in self.playlist:
-                    playlist_file.write(f"file '{episode.path}'\n")
+        self.fill_playlist()
 
         self.url = 'rtmp://localhost:1935/Channel/'+str(self.id)
-
-    def start_stream(self):
-        # Make playlist file
+    def kill_file_thread(self, reset:bool=False):
+        self.kill = True
+        self.files_thread.join()
         try:
+            os.remove(f"{self.dir}/ep.txt")
+            os.remove(f"{self.dir}/title.txt")
+            os.remove(f"{self.dir}/duration.txt")
+            os.remove(f"{self.dir}/elapsed.txt")
+            os.remove(f"{self.dir}/remain.txt")
             os.remove(self.playlist_path)
-            with open(self.playlist_path, "w+") as f_ep: f_ep.flush()
-        except: 
-            print("ERROR! Playlist not emptied!")
-        with open(self.playlist_path, "a") as playlist_file:
-            for episode in self.playlist:
-                    playlist_file.write(f"file '{episode.path}'\n")
+            os.remove(self.dir)
+        except: print("Error deleting files")
+        if reset: self.kill = False
+    def start_stream(self):
+        
+        if self.shuffle_mode != ShuffleMode.OFF:
+            # Make playlist file
+            self.fill_playlist()
 
         if self.shuffle_mode != ShuffleMode.OFF:
             command = [ 'ffmpeg', '-hide_banner', '-re', '-f', 'concat', '-safe', '0', '-i', self.playlist_path,                        '-c:v', 'h264_nvenc', '-b:v', '4096k', '-bufsize', '8M', '-preset', 'fast', '-pix_fmt', 'yuv420p', '-g', '60', '-c:a', 'aac', '-b:a', '160k', '-f', 'flv', self.url, '-rtmp_live', '1']
@@ -233,45 +238,40 @@ class Channel:
             try: self.ffmpeg_proc.terminate()
             except: print("No FFMPEG Process")
             self.live = False
-            self.kill = True
             self.quit = True
-            self.files_thread.join()
-            try:
-                os.remove(f"{self.dir}/ep.txt")
-                os.remove(f"{self.dir}/title.txt")
-                os.remove(f"{self.dir}/duration.txt")
-                os.remove(f"{self.dir}/elapsed.txt")
-                os.remove(f"{self.dir}/remain.txt")
-                os.remove(self.playlist_path)
-                os.remove(self.dir)
-            except: print("Error deleting files")
+            self.kill_file_thread()
+            
     def m_quit(self):
         keyboard.remove_hotkey("ctrl+q")
         try: self.ffmpeg_proc.terminate()
         except: print("No FFMPEG Process")
         self.live = False
-        self.kill = True
         self.quit = True
-        self.files_thread.join()
+        self.kill_file_thread()
+        if self.shuffle_mode != ShuffleMode.OFF: self.generate_playlist()
+    def fill_playlist(self):
+        self.clear_playlist()
+        with open(self.playlist_path, "a") as playlist_file:
+            for episode in self.playlist:
+                    episode.path.replace('\'', '\\\'')
+                    playlist_file.write(f"file \'{episode.path}\'\n")
+    def clear_playlist(self):
         try:
-            os.remove(f"{self.dir}/ep.txt")
-            os.remove(f"{self.dir}/title.txt")
-            os.remove(f"{self.dir}/duration.txt")
-            os.remove(f"{self.dir}/elapsed.txt")
-            os.remove(f"{self.dir}/remain.txt")
             os.remove(self.playlist_path)
-            os.remove(self.dir)
-        except: print("Error deleting files")
-        if self.shuffle_mode != ShuffleMode.OFF:            
-            if self.shuffle_mode == ShuffleMode.SHUFFLE_FILES:
-                self.playlist = self.all_episodes
-                random.shuffle(self.playlist)
-            elif self.shuffle_mode == ShuffleMode.SHUFFLE_GROUPS:
-                shuff_seasons = self.all_seasons
-                random.shuffle(shuff_seasons)
-                for season in shuff_seasons:
-                    for episode in season.episodes:
-                        self.playlist.append(episode)
+            with open(self.playlist_path, "w+") as f_ep: f_ep.flush()
+        except: 
+            print("ERROR! Playlist not emptied!")
+    def generate_playlist(self, clear:bool=False):
+        if clear:self.clear_playlist()
+        if self.shuffle_mode == ShuffleMode.SHUFFLE_FILES:
+            self.playlist = self.all_episodes
+            random.shuffle(self.playlist)
+        elif self.shuffle_mode == ShuffleMode.SHUFFLE_GROUPS:
+            shuff_seasons = self.all_seasons
+            random.shuffle(shuff_seasons)
+            for season in shuff_seasons:
+                for episode in season.episodes:
+                    self.playlist.append(episode)
     def update_files(self):
         while self.started == 0: pass
         with open(f"{self.dir}/ep.txt", "w+") as f_ep:
